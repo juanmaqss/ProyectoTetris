@@ -4,12 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Tetris</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        canvas {
+            border: 2px solid white;
+        }
+        
+        .panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
+
     <canvas id="tetris" width="240" height="400"></canvas>
 
+    <div class="panel">
+        <h3>Next</h3>
+        <canvas id="next" width="80" height="80"></canvas>
+    </div>
+
     <script src="game.js"></script>
+
 </body>
 
 </html>
