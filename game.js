@@ -55,6 +55,7 @@ function playerDrop() {
     if (collide(arena, player)) {
         player.pos.y--;
         merge(arena, player);
+        arenaSweep();
         playerReset();
     }
 }
@@ -129,6 +130,20 @@ function update(time = 0) {
 
     draw();
     requestAnimationFrame(update);
+}
+
+function arenaSweep() {
+    outer: for (let y = arena.length - 1; y >= 0; y--) {
+        for (let x = 0; x < arena[y].length; x++) {
+            if (arena[y][x] === 0) {
+                continue outer;
+            }
+        }
+
+        const row = arena.splice(y, 1)[0].fill(0);
+        arena.unshift(row);
+        y++;
+    }
 }
 
 document.addEventListener("keydown", event => {
